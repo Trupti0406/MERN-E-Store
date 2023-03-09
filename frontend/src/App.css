@@ -1,38 +1,67 @@
 .App {
   text-align: center;
 }
+.row > * {
+  padding: 0.5rem !important;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+  padding: 0 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-img-top {
+  height: 170px;
+  object-fit: contain;
 }
 
-.App-link {
-  color: #61dafb;
+.card-img-top:hover {
+  transform: scale(1.07);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+button {
+  background-color: #febd69;
+  border: none;
+  margin: auto;
+  border-radius: 8px;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #f79210;
+}
+.price {
+  color: #f79210;
+}
+
+.add-to-cart {
+  color: black;
+  font-size: 25px;
+}
+
+.card-text {
+  line-height: 1.5em;
+  height: 3em; /* height is 3x line-height, so two lines will display */
+  overflow: hidden; /* prevents extra lines from being visible */
+}
+
+.card {
+  border-radius: 0px !important;
+}
+.card-title {
+  line-height: 0.9em;
+  height: 1.8em;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+/* Media queries */
+@media only screen and (max-width: 900px) {
+  button {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
   }
 }
