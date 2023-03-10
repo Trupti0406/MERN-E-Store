@@ -1,9 +1,10 @@
 import React from "react";
+import "../App.css";
 
 export default function Rating(props) {
   const { rating, numReviews } = props;
   return (
-    <div className="d-flex justify-content-center gap-2 mt-3">
+    <div className="rating d-flex gap-2 mt-2 justify-content-center">
       <span style={{ color: "#ffc000" }}>
         <i
           className={
