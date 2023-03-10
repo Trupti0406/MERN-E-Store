@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import Product from "../components/Product";
 // import logger from "use-reducer-logger";
 
 const reducer = (state, action) => {
@@ -51,29 +51,7 @@ export default function HomeScreen() {
         ) : (
           products.map((product) => (
             <div className="col" key={product.slug}>
-              <div className="card">
-                <Link to={`/product/${product.slug}`}>
-                  <img
-                    src={product.image}
-                    className="card-img-top pt-3"
-                    alt={product.name}
-                  />
-                </Link>
-                <div className="card-body text-center">
-                  <Link
-                    to={`/product/${product.slug}`}
-                    className="text-decoration-none text-black"
-                  >
-                    <h5 className="card-title fw-bold">{product.name}</h5>
-                  </Link>
-                  <p className="price fw-semibold h5">₹ {product.price}</p>
-                  <p className="card-text">{product.description}</p>
-                  <button className="d-flex align-items-center px-3 py-2">
-                    <i className="add-to-cart fa-solid fa-cart-shopping me-2"></i>
-                    <span className="fw-bold">Add To Cart</span>
-                  </button>
-                </div>
-              </div>
+              <Product product={product}/>
             </div>
           ))
         )}
