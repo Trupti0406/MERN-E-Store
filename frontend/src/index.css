@@ -7,12 +7,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  background-color: #404040;
-  padding: 1rem;
-}
-header a {
-  color: #ffff;
-  font-weight: bold;
-  text-decoration: none;
-}

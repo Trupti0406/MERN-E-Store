@@ -1,5 +1,8 @@
-.App {
-  text-align: center;
+.app-container{
+  min-height: 100vh;
+}
+main{
+  flex: 1;
 }
 .row > * {
   padding: 0.5rem !important;
@@ -55,6 +58,11 @@ button:hover {
   height: 1.8em;
   overflow: hidden;
   margin-top: 8px;
+}
+
+.logo {
+  height: 3rem;
+  width: 10rem;
 }
 
 /* Media queries */
