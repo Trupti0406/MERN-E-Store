@@ -2,6 +2,9 @@ import React, { useEffect, useReducer } from "react";
 import "../App.css";
 import axios from "axios";
 import Product from "../components/Product";
+import LodingBox from "../components/LodingBox";
+import MessageBox from "../components/MessageBox";
+import { getError } from "../utils";
 // import logger from "use-reducer-logger";
 
 const reducer = (state, action) => {
@@ -33,7 +36,7 @@ export default function HomeScreen() {
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
       // sending ajax request to 'api/products' and storing the reult in "resutl" variable
       //   setProducts(result.data);
@@ -45,13 +48,13 @@ export default function HomeScreen() {
       <h2 className="fw-bolder text-center py-3 px-3">Featured Products</h2>
       <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 mb-5 px-3 g-0 justify-content-center ">
         {loading ? (
-          <h3>Loading...</h3>
+          <LodingBox />
         ) : error ? (
-          <h3>error</h3>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           products.map((product) => (
             <div className="col" key={product.slug}>
-              <Product product={product}/>
+              <Product product={product} />
             </div>
           ))
         )}

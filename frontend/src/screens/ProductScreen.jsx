@@ -1,8 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
+import LodingBox from "../components/LodingBox";
+import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
+import { Store } from "../Store";
+import { getError } from "../utils";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -38,7 +42,7 @@ export default function ProductScreen() {
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
       // sending ajax request to 'api/products' and storing the reult in "resutl" variable
       //   setProducts(result.data);
@@ -47,10 +51,20 @@ export default function ProductScreen() {
     // Putting slug as an argument in our useeffect so when the user clicks on a certain product the product screen gets deispatched(loaded)
   }, [slug]);
 
+  //To add items to the cart I need to dispatch action on the react context, thats wht getting context here
+
+  const { state, dispatch: contextDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    contextDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...product, quantiy: 1 },
+    });
+  };
+
   return loading ? (
-    <h1>Loding</h1>
+    <LodingBox />
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div className="container row bg-white m-auto mt-4 py-5 shadow">
       <div className="col d-flex justify-content-center">
@@ -87,7 +101,10 @@ export default function ProductScreen() {
             </div>
             <hr />
             {product.countInStock > 0 && (
-              <button className="d-flex align-items-center px-3 py-2">
+              <button
+                className="d-flex align-items-center px-3 py-2"
+                onClick={addToCartHandler}
+              >
                 <i className="add-to-cart fa-solid fa-cart-shopping me-2"></i>
                 <span className="fw-bold">Add To Cart</span>
               </button>
