@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LodingBox from "../components/LodingBox";
 import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
@@ -25,6 +25,7 @@ export default function ProductScreen() {
   /*The useParams hook returns an object of key / value pairs of the dynamic params
    from the current URL that were matched by the < Route path >.
    Child routes inherit all params from their parent routes.*/
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
@@ -54,11 +55,23 @@ export default function ProductScreen() {
   //To add items to the cart I need to dispatch action on the react context, thats wht getting context here
 
   const { state, dispatch: contextDispatch } = useContext(Store);
-  const addToCartHandler = () => {
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    // If current product exists in the cart or not
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    // If it exists then we need to increase the quantity by 1
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert("Sorry, the product is out of stock");
+      return;
+    }
+
     contextDispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...product, quantiy: 1 },
+      payload: { ...product, quantity },
     });
+    navigate("/cart");
   };
 
   return loading ? (
@@ -84,17 +97,19 @@ export default function ProductScreen() {
         </h5>
       </div>
       <div className="col">
-        <div class="card text-center" style={{ width: "15rem" }}>
-          <div class="card-body">
-            <h5 class="card-title">Price: ₹ {product.price}/-</h5>
+        <div className="card text-center m-auto" style={{ width: "15rem" }}>
+          <div className="card-body">
+            <h5 className="card-title">Price: ₹ {product.price}/-</h5>
             <hr />
 
             <div className="d-flex justify-content-center gap-3">
               <h5>Status:</h5>
               {product.countInStock > 0 ? (
-                <span class="badge text-bg-success my-auto p-2">In Stock</span>
+                <span className="badge text-bg-success my-auto p-2">
+                  In Stock
+                </span>
               ) : (
-                <span class="badge text-bg-danger ny-auto p-2">
+                <span className="badge text-bg-danger ny-auto p-2">
                   Out Of Stock
                 </span>
               )}

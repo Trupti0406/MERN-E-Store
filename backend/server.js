@@ -17,6 +17,16 @@ app.get("/api/products/slug/:slug", (req, res) => {
   }
 });
 
+// Backend api for add to cart product id
+app.get("/api/products/:id", (req, res) => {
+  const product = data.products.find((x) => x._id === req.params.id);
+  if (product) {
+    res.send(product);
+  } else {
+    res.send(404).send({ message: "Product Out Of Stock" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Sever is running at http://localhost:${port}`);
 });

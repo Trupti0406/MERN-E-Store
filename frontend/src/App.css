@@ -1,7 +1,7 @@
-.app-container{
+.app-container {
   min-height: 100vh;
 }
-main{
+main {
   flex: 1;
 }
 .row > * {
@@ -65,6 +65,68 @@ button:hover {
   width: 10rem;
 }
 
+/* ========================Cart Page CSS============================= */
+.mainContainer {
+  flex-wrap: wrap;
+}
+
+.items {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+.items .card-header {
+  border-radius: 6px 6px 0 0 !important;
+  border: 1px solid rgb(0, 0, 0, 0.175);
+  background-color: #ffcc8a !important;
+}
+.card-header:first-child {
+  background-color: #ffcc8a;
+}
+.q-text {
+  margin-top: -12px;
+}
+.innercols {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-cost {
+  background-color: #ffcc8a;
+}
+
+.cart-img {
+  height: 170px;
+  width: 170px;
+  object-fit: contain;
+}
+.mainContainer button {
+  background-color: #ffcc8a;
+  padding: 5px 12px;
+  font-weight: bolder;
+  border-radius: 6px;
+  border: none;
+}
+.mainContainer button:hover,
+.mainContainer .btn:hover {
+  background-color: #f79210;
+}
+
+.mainContainer .btn {
+  background-color: #ffcc8a;
+}
+
+.mainContainer #quantity {
+  padding: 8px 25px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mainContainer .total {
+  font-size: 17px;
+}
 /* Media queries */
 @media only screen and (max-width: 900px) {
   button {
@@ -72,7 +134,7 @@ button:hover {
     flex-direction: column;
     padding-top: 10px;
   }
-  .rating{
+  .rating {
     flex-direction: column;
   }
 }

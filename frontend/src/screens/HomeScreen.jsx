@@ -46,7 +46,7 @@ export default function HomeScreen() {
   return (
     <>
       <h2 className="fw-bolder text-center py-3 px-3">Featured Products</h2>
-      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 mb-5 px-3 g-0 justify-content-center ">
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 mb-5 px-3 g-0 justify-content-center align-items-center">
         {loading ? (
           <LodingBox />
         ) : error ? (
