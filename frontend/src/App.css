@@ -138,3 +138,42 @@ button:hover {
     flex-direction: column;
   }
 }
+
+/* ================== CSS for Login Screen ============  */
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffcc8a;
+  padding: 30px 30px 55px 30px;
+  width: 400px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.login-form input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #f79210;
+}
+
+.login-form button {
+  background-color: #f79210;
+  border: 2px solid #f79210;
+  padding: 8px;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.login-form label {
+  font-size: 18px;
+}
+
+/* Media queries for Login Page */
+@media only screen and (max-width: 600px) {
+  .login-form {
+    width: 350px;
+  }
+}

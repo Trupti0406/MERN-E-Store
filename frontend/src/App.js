@@ -6,6 +6,7 @@ import logo from "./logo.png";
 import { useContext } from "react";
 import { Store } from "./Store";
 import CartScreen from "./screens/CartScreen";
+import SignInScreen from "./screens/SignInScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -42,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/product/:slug" element={<ProductScreen />} />
             <Route path="/cart" element={<CartScreen />} />
-
+            <Route path="/signin" element={<SignInScreen />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         </main>

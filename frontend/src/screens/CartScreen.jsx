@@ -1,14 +1,35 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 
 export default function CartScreen() {
+  const navigate = useNavigate();
   const { state, dispatch: contextDispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
+
+  const updateCartHandler = async (item, quantity) => {
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      window.alert("Sorry, Product is out of stock");
+    }
+    contextDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...item, quantity },
+    });
+  };
+
+  const removeItemHandler = (item) => {
+    contextDispatch({ type: "CART_REMOVE_ITME", payload: item });
+  };
+
+  const checkOutHandler = () => {
+    navigate("/signin?redirect=/shipping");
+  };
   return (
     <>
       <Helmet>
@@ -52,7 +73,10 @@ export default function CartScreen() {
                         <h5 className="cart-price text-muted">
                           ₹ {item.price}
                         </h5>
-                        <button className="delete d-flex align-items-center justify-content-center">
+                        <button
+                          onClick={() => removeItemHandler(item)}
+                          className="delete d-flex align-items-center justify-content-center"
+                        >
                           <span>Delete Item</span>
                           <i className="fas fa-trash-alt h6 mx-1 mt-md-1"></i>
                         </button>
@@ -63,7 +87,14 @@ export default function CartScreen() {
                         <h4 className="q-text text-black">Quantity</h4>
                         <br />
                         <div className="d-flex gap-1">
-                          <button disabled={item.quantity === 1}>-</button>
+                          <button
+                            onClick={() =>
+                              updateCartHandler(item, item.quantity - 1)
+                            }
+                            disabled={item.quantity === 1}
+                          >
+                            -
+                          </button>
                           <span
                             className="py-1 px-3 border"
                             id="quantity1"
@@ -73,6 +104,9 @@ export default function CartScreen() {
                             {item.quantity}{" "}
                           </span>
                           <button
+                            onClick={() =>
+                              updateCartHandler(item, item.quantity + 1)
+                            }
                             disabled={item.quantity === item.countInStock}
                           >
                             +
@@ -113,10 +147,11 @@ export default function CartScreen() {
                   <div className="col total fw-bold">Estimated Total</div>
                   <div className="col total total-amt fw-bold">₹ 4297</div>
                 </div> */}
-                              
-                              <hr />
+
+                <hr />
                 <div className="d-grid">
                   <button
+                    onClick={checkOutHandler}
                     className="btn fw-bold"
                     disabled={cartItems.length === 0}
                   >
