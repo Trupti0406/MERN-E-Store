@@ -1,7 +1,7 @@
 const data = {
   products: [
     {
-      _id: "1",
+      // _id: "1",
       name: "Denim",
       slug: "denim-shirt",
       category: "Shirts",
@@ -14,7 +14,7 @@ const data = {
       description: " Dark checked men's shirt full sleeves.",
     },
     {
-      _id: "2",
+      // _id: "2",
       name: "Printed Shirt",
       slug: "printed-shirt",
       category: "Shirts",
@@ -28,7 +28,7 @@ const data = {
         " Men's Poly Cotton Digital Printed Stitched Half Sleeve Shirt",
     },
     {
-      _id: "3",
+      // _id: "3",
       name: "Prime Shirt",
       slug: "prime-shirt",
       category: "Shirts",
@@ -41,7 +41,7 @@ const data = {
       description: "IndoPrimo Men's Regular Fit Casual Shirt",
     },
     {
-      _id: "4",
+      // _id: "4",
       name: "Cotton Shirt",
       slug: "cotton-shirt",
       category: "Shirts",
@@ -55,7 +55,7 @@ const data = {
         " Men's Striped Yellow & Black Regular Fit Cotton Casual Shirt",
     },
     {
-      _id: "5",
+      // _id: "5",
       name: "GWA Track-pants",
       slug: "gwa-track-pants",
       category: "Pants",
@@ -68,7 +68,7 @@ const data = {
       description: "Mens Trackpant diffrent color(Pack of 3)",
     },
     {
-      _id: "6",
+      // _id: "6",
       name: "Camouflage Pant",
       slug: "camouflage-pant",
       category: "Pants",
@@ -81,7 +81,7 @@ const data = {
       description: "Men's Camouflage Regular Fit Track Pant",
     },
     {
-      _id: "7",
+      // _id: "7",
       name: "Symbol Fit Pant",
       slug: "symbol-fit-pant",
       category: "Pants",
@@ -94,7 +94,7 @@ const data = {
       description: " Men's Straight Casual Trousers Light Gray Color.",
     },
     {
-      _id: "8",
+      // _id: "8",
       name: "Urbano Jeans",
       slug: "urbano-jeans",
       category: "Pants",
@@ -107,7 +107,7 @@ const data = {
       description: "Men's slim fit blue pencil jeans",
     },
     {
-      _id: "9",
+      // _id: "9",
       name: "Kurta Set",
       slug: "kurta-set",
       category: "Dress",
@@ -121,7 +121,7 @@ const data = {
         " Miss Ethnik Women's Faux Georgette Semi Stitched Top With Stitched Faux.",
     },
     {
-      _id: "10",
+      // _id: "10",
       name: "Checked Frock",
       slug: "checked-frock",
       category: "Dress",
@@ -134,7 +134,7 @@ const data = {
       description: "Frock above knee length, elbow length sleeves checked.",
     },
     {
-      _id: "11",
+      // _id: "11",
       name: "Pink Dress",
       slug: "pink-dress",
       category: "Dress",
@@ -148,7 +148,7 @@ const data = {
         " Women's Polyester comfortable A-Line Knee-Length, sleevless Dress",
     },
     {
-      _id: "12",
+      // _id: "12",
       name: "Black Knee-L Dress",
       slug: "black-knee-l-dress",
       category: "Dress",

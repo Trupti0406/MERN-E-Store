@@ -16,13 +16,13 @@ export default function SignInScreen() {
         <img src={logo} alt="logo" style={{ width: "180px" }} />
         <p className="mt-4 fw-bold">Please login to your account</p>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" for="email">
+          <label className="fw-semibold" htmlFor="email">
             E-mail:
           </label>
           <input type="email" name="" id="email" required />
         </div>
         <div className="d-flex flex-column mb-4">
-          <label className="fw-semibold" for="password">
+          <label className="fw-semibold" htmlFor="password">
             Password:
           </label>
           <input type="password" name="" id="password" required />
