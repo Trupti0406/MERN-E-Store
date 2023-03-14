@@ -158,7 +158,8 @@ button:hover {
   border: 1px solid #f79210;
 }
 
-.login-form button {
+.login-form,
+.shipping-form button {
   background-color: #f79210;
   border: 2px solid #f79210;
   padding: 8px;
@@ -167,7 +168,8 @@ button:hover {
   font-size: 18px;
 }
 
-.login-form label {
+.login-form,
+.shipping-form label {
   font-size: 18px;
 }
 
@@ -176,4 +178,29 @@ button:hover {
   .login-form {
     width: 350px;
   }
+  .shipping-form {
+    width: 350px !important;
+  }
+  .shipping-form input{
+    width: 300px !important;
+  }
+}
+/* ====================css for shipping form=============== */
+.shipping-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffcc8a;
+  padding: 15px;
+  width: 500px;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.shipping-form input {
+  width: 400px;
+  padding: 6px;
+  border: 1px solid #f79210;
 }

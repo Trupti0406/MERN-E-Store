@@ -53,7 +53,7 @@ export default function SignInScreen() {
         <img src={logo} alt="logo" style={{ width: "180px" }} />
         <p className="mt-4 fw-bold">Please login to your account</p>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="email">
+          <label className="fw-semibold" htmlhtmlFor="email">
             E-mail:
           </label>
           <input
@@ -63,7 +63,7 @@ export default function SignInScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-4">
-          <label className="fw-semibold" htmlFor="password">
+          <label className="fw-semibold" htmlhtmlFor="password">
             Password:
           </label>
           <input
@@ -72,9 +72,11 @@ export default function SignInScreen() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button id="login-btn" className="fw-bold">
-          Login
-        </button>
+        <div className="d-grid">
+          <button id="login-btn" className="fw-bold">
+            Login
+          </button>
+        </div>
 
         <div className="">
           <p className="mt-3 fw-bold">

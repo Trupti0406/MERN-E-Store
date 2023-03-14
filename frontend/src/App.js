@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { Store } from "./Store";
 import CartScreen from "./screens/CartScreen";
 import SignInScreen from "./screens/SignInScreen";
+import ShippingScreen from "./screens/ShippingScreen";
 
 function App() {
   const { state, dispatch: contextDispatch } = useContext(Store);
@@ -20,7 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app-container d-flex flex-column bg-light ">
-        <ToastContainer position="bottom-center" limit={1}/>
+        <ToastContainer position="bottom-center" limit={1} />
         <header className="shadow">
           <nav className="navbar navbar-inverse p-2">
             <div className="container-fluid">
@@ -95,6 +96,8 @@ function App() {
             <Route path="/product/:slug" element={<ProductScreen />} />
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/signin" element={<SignInScreen />} />
+            <Route path="/shipping" element={<ShippingScreen />} />
+
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         </main>
