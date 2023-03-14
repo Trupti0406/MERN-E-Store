@@ -1,4 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -7,12 +9,18 @@ import { useContext } from "react";
 import { Store } from "./Store";
 import CartScreen from "./screens/CartScreen";
 import SignInScreen from "./screens/SignInScreen";
+
 function App() {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: contextDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+  const signoutHandler = () => {
+    contextDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+  };
   return (
     <BrowserRouter>
       <div className="app-container d-flex flex-column bg-light ">
+        <ToastContainer position="bottom-center" limit={1}/>
         <header className="shadow">
           <nav className="navbar navbar-inverse p-2">
             <div className="container-fluid">
@@ -21,7 +29,7 @@ function App() {
                   <img src={logo} alt="logo" className="logo" />
                 </Link>
               </div>
-              <ul className="nav gap-4 navbar-right d-flex align-items-center">
+              <ul className="nav gap-4 navbar-right d-flex align-items-center me-5">
                 <li>
                   <Link
                     to="/cart"
@@ -34,6 +42,49 @@ function App() {
                       </span>
                     )}
                   </Link>
+                </li>
+                <li>
+                  {userInfo ? (
+                    <div className="dropdown">
+                      <Link
+                        className="btn btn-secondary dropdown-toggle"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        {userInfo.name}
+                      </Link>
+
+                      <ul className="dropdown-menu">
+                        <li>
+                          <Link className="dropdown-item" to="/profile">
+                            Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to="/orderhistoy">
+                            Order History
+                          </Link>
+                        </li>
+                        <li>
+                          <hr className="dropdown-divider" />
+                        </li>
+                        <li>
+                          <Link
+                            className="dropdown-item"
+                            to="#signout"
+                            onClick={signoutHandler}
+                          >
+                            Sign Out
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <Link className="nav-link" to="/signin">
+                      Sign In
+                    </Link>
+                  )}
                 </li>
               </ul>
             </div>
