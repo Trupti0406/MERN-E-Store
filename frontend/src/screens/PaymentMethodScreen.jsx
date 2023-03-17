@@ -20,6 +20,7 @@ export default function PaymentMethodScreen() {
       navigate("/shipping");
     }
   }, [shippingAddress, navigate]);
+  
   const submitHandler = (e) => {
     e.preventDefault();
     contextDispatch({

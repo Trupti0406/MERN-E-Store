@@ -13,9 +13,9 @@ const initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
-    paymentMethod: localStorage.getItem("paymentMethod")
+      paymentMethod: localStorage.getItem("paymentMethod")
       ? localStorage.getItem("paymentMethod")
-      : {},
+      : '',
   },
 };
 

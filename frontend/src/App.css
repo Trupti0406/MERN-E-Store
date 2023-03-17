@@ -230,3 +230,9 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: auto;
 }
+
+.img-thumbnail {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}

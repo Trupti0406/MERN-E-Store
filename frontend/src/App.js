@@ -12,6 +12,7 @@ import SignInScreen from "./screens/SignInScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 
 function App() {
   const { state, dispatch: contextDispatch } = useContext(Store);
@@ -104,6 +105,7 @@ function App() {
             <Route path="/shipping" element={<ShippingScreen />} />
             <Route path="/signup" element={<SignUpScreen />} />
             <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
 
             <Route path="/" element={<HomeScreen />} />
           </Routes>
