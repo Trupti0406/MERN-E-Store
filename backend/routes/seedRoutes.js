@@ -7,11 +7,10 @@ const seedRouter = express.Router();
 
 seedRouter.get("/", async (req, res) => {
   // Remove all previous records in product model
-  await Product.deleteMany({});
-    const createdProducts = await Product.insertMany(data.products);
-    
+  await Product.remove({});
+  const createdProducts = await Product.insertMany(data.products);
 
-  await User.deleteMany({});
+  await User.remove({});
   const createdUsers = await User.insertMany(data.users);
   res.send({ createdProducts, createdUsers });
 });

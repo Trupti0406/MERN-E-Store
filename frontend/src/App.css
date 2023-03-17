@@ -181,7 +181,7 @@ button:hover {
   .shipping-form {
     width: 350px !important;
   }
-  .shipping-form input{
+  .shipping-form input {
     width: 300px !important;
   }
 }
@@ -205,14 +205,28 @@ button:hover {
   border: 1px solid #f79210;
 }
 
-
 /* ==========================CSS FOR CHECKOUTBAR ================================= */
-.checkout-steps > div{
+.checkout-steps > div {
   border-bottom: 6px solid gray;
   color: gray;
 }
 
-.checkout-steps > div.active{
+.checkout-steps > div.active {
   border-bottom: 6px solid #f79210;
   color: #f79210;
+}
+/* ==========================CSS FOR Payment ============================== */
+
+.payment form {
+  width: 250px;
+  background-color: #ffcc8a;
+  padding: 15px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: auto;
 }

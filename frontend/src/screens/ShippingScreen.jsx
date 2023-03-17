@@ -14,15 +14,17 @@ export default function ShippingScreen() {
   const [fullName, setFullName] = useState(shippingAddress.fullName || "");
   const [address, setAddress] = useState(shippingAddress.address || "");
   const [city, setCity] = useState(shippingAddress.city || "");
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || "");
+  const [postalCode, setPostalCode] = useState(
+    shippingAddress.postalCode || ""
+  );
   const [country, setCountry] = useState(shippingAddress.country || "");
 
-    useEffect(() => {
-        if (!userInfo) {
-            navigate('/signin?redirect=/shipping')
-        }
-    },[userInfo, navigate])
-    
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/signin?redirect=/shipping");
+    }
+  }, [userInfo, navigate]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     contextDispatch({
@@ -56,7 +58,7 @@ export default function ShippingScreen() {
       <h2 className="mb-3 fw-bold text-center">Shipping Address</h2>
       <form onSubmit={submitHandler} className="shipping-form mt-3 mb-4">
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="fulname">
+          <label className="fw-semibold" htmlhtmlFor="fulname">
             Full Name
           </label>
           <input
@@ -67,7 +69,7 @@ export default function ShippingScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="address">
+          <label className="fw-semibold" htmlhtmlFor="address">
             Address
           </label>
           <input
@@ -78,7 +80,7 @@ export default function ShippingScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="city">
+          <label className="fw-semibold" htmlhtmlFor="city">
             City
           </label>
           <input
@@ -89,7 +91,7 @@ export default function ShippingScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="email">
+          <label className="fw-semibold" htmlhtmlFor="email">
             Postal Code
           </label>
           <input
@@ -100,7 +102,7 @@ export default function ShippingScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlFor="email">
+          <label className="fw-semibold" htmlhtmlFor="email">
             Country
           </label>
           <input

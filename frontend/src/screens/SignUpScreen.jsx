@@ -7,21 +7,29 @@ import { toast } from "react-toastify";
 import { Store } from "../Store";
 import { getError } from "../utils";
 
-export default function SignInScreen() {
+export default function SignUpScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInURL = new URLSearchParams(search).get("redirect");
   const redirect = redirectInURL ? redirectInURL : "/";
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const { state, dispatch: contextDispatch } = useContext(Store);
   const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
     try {
       // sending ajax request to backend for '/api/user/signin'
-      const { data } = await Axios.post("/api/users/signin", {
+      const { data } = await Axios.post("/api/users/signup", {
+        name,
         email,
         password,
       });
@@ -47,11 +55,20 @@ export default function SignInScreen() {
   return (
     <>
       <Helmet>
-        <title>Sign In</title>
+        <title>Sign Up</title>
       </Helmet>
       <form action="" className="login-form mt-3 mb-4" onSubmit={submitHandler}>
-        {/* <img src={logo} alt="logo" style={{ width: "180px" }} /> */}
-        <h2 className="mt-4 fw-bold">Please login to your account</h2>
+        <h2 className="mt-4 fw-bold">Sign Up</h2>
+        <div className="d-flex flex-column mb-3">
+          <label className="fw-semibold" htmlhtmlFor="name">
+            Name:
+          </label>
+          <input
+            type="text"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
         <div className="d-flex flex-column mb-3">
           <label className="fw-semibold" htmlhtmlFor="email">
             E-mail:
@@ -72,18 +89,26 @@ export default function SignInScreen() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className="d-flex flex-column mb-3">
+          <label className="fw-semibold" htmlhtmlFor="Confirm password">
+            Confirm Password:
+          </label>
+          <input
+            type="password"
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
         <div className="d-grid">
           <button id="login-btn" className="fw-bold">
-            Login
+            Create Account
           </button>
         </div>
 
         <div className="">
           <p className="mt-3 fw-bold">
-            New Customer?{" "}
-            <Link to={`/signup?redirect=${redirect}`}>
-              Create Your Account.
-            </Link>{" "}
+            Already have an account?{" "}
+            <Link to={`/signin?redirect=${redirect}`}>Sign In</Link>{" "}
           </p>
         </div>
       </form>
