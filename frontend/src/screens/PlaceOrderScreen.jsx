@@ -1,3 +1,4 @@
+import  Axios  from "axios";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,9 +9,31 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Store } from "../Store";
 import CheckOutBar from "../components/CheckOutBar";
 import { useEffect } from "react";
+import { useReducer } from "react";
+import { toast } from "react-toastify";
+import { getError } from "../utils";
+import LodingBox from "../components/LodingBox";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "CREATE_REQUEST":
+      return { ...state, loading: true };
+    case "CREATE_SUCCESS":
+      return { ...state, loading: false };
+    case "CREATE_FAIL":
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+};
 
 export default function PlaceOrderScreen() {
   const navigate = useNavigate();
+
+  const [{ loading}, dispatch] = useReducer(reducer, {
+    loading: false,
+  });
+
   const { state, dispatch: contextDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
@@ -22,7 +45,37 @@ export default function PlaceOrderScreen() {
 
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
 
-  const placeOrderHandler = async () => {};
+  const placeOrderHandler = async () => {
+    try {
+        dispatch({ type: "CREATE_REQUEST" });
+        
+      const { data } = await Axios.post(
+        "/api/orders",
+        {
+          orderItems: cart.cartItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          totalPrice: cart.totalPrice,
+          },
+        // By having this option, this particular api is authenticated,
+        // means, in the server I can detect if the request is coming from a logged in user or hacker
+        {
+          headers: {
+            authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      contextDispatch({ type: "CART_CLEAR" });
+      dispatch({ type: "CREATE_SUCCESS" });
+      localStorage.removeItem("cartItems");
+      navigate(`/order/${data.order._id}`);
+    } catch (error) {
+      dispatch({ type: "CREATE_FAIL" });
+      toast.error(getError(error));
+    }
+  };
   useEffect(() => {
     if (!cart.paymentMethod) {
       navigate("/payment");
@@ -130,7 +183,8 @@ export default function PlaceOrderScreen() {
                   >
                     Place Order
                   </button>
-                </div>
+                              </div>
+                              {loading && <LodingBox/>}
               </div>
             </div>
           </div>
