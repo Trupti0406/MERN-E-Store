@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import CheckOutBar from "../components/CheckOutBar";
 import { Store } from "../Store";
@@ -48,6 +49,7 @@ export default function ShippingScreen() {
       })
     );
     navigate("/payment");
+    console.log("Navigated to next page");
   };
   return (
     <>
@@ -57,61 +59,46 @@ export default function ShippingScreen() {
       <CheckOutBar step1 step2></CheckOutBar>
       <h2 className="mb-3 fw-bold text-center">Shipping Address</h2>
       <form onSubmit={submitHandler} className="shipping-form mt-3 mb-4">
-        <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="fulname">
-            Full Name
-          </label>
-          <input
-            type="text"
+        <Form.Group className="mb-3" controlId="fullName">
+          <Form.Label className='fw-semibold'>Full Name</Form.Label>
+          <Form.Control
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             required
           />
-        </div>
-        <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="address">
-            Address
-          </label>
-          <input
-            type="text"
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="address">
+          <Form.Label className='fw-semibold'>Address</Form.Label>
+          <Form.Control
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-        </div>
-        <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="city">
-            City
-          </label>
-          <input
-            type="text"
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="city">
+          <Form.Label className='fw-semibold'>City</Form.Label>
+          <Form.Control
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
           />
-        </div>
-        <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="email">
-            Postal Code
-          </label>
-          <input
-            type="text"
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="postalCode">
+          <Form.Label className='fw-semibold'>Postal Code</Form.Label>
+          <Form.Control
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             required
           />
-        </div>
-        <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="email">
-            Country
-          </label>
-          <input
-            type="text"
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="country">
+          <Form.Label className='fw-semibold'>Country</Form.Label>
+          <Form.Control
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
           />
-        </div>
+        </Form.Group>
 
         <div className="d-grid">
           <button id="login-btn" className="fw-bold">

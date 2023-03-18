@@ -60,7 +60,7 @@ export default function SignUpScreen() {
       <form action="" className="login-form mt-3 mb-4" onSubmit={submitHandler}>
         <h2 className="mt-4 fw-bold">Sign Up</h2>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="name">
+          <label className="fw-semibold" htmlFor="name">
             Name:
           </label>
           <input
@@ -70,7 +70,7 @@ export default function SignUpScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="email">
+          <label className="fw-semibold" htmlFor="email">
             E-mail:
           </label>
           <input
@@ -80,7 +80,7 @@ export default function SignUpScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-4">
-          <label className="fw-semibold" htmlhtmlFor="password">
+          <label className="fw-semibold" htmlFor="password">
             Password:
           </label>
           <input
@@ -90,7 +90,7 @@ export default function SignUpScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="Confirm password">
+          <label className="fw-semibold" htmlFor="Confirm password">
             Confirm Password:
           </label>
           <input

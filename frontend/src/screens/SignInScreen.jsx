@@ -53,7 +53,7 @@ export default function SignInScreen() {
         {/* <img src={logo} alt="logo" style={{ width: "180px" }} /> */}
         <h2 className="mt-4 fw-bold">Please login to your account</h2>
         <div className="d-flex flex-column mb-3">
-          <label className="fw-semibold" htmlhtmlFor="email">
+          <label className="fw-semibold" htmlFor="email">
             E-mail:
           </label>
           <input
@@ -63,7 +63,7 @@ export default function SignInScreen() {
           />
         </div>
         <div className="d-flex flex-column mb-4">
-          <label className="fw-semibold" htmlhtmlFor="password">
+          <label className="fw-semibold" htmlFor="password">
             Password:
           </label>
           <input
