@@ -27,6 +27,10 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+// Paypal api 
+app.get('/api/keys/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "SandBox");
+})
 
 
 app.use("/api/seed", seedRouter);
