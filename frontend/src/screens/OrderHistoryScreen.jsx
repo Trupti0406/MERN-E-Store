@@ -62,7 +62,7 @@ export default function OrderHistoryScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <div class="table-responsive">
+          <div className="table-responsive">
             <table
               className="container
           table table-hover table-bordered  "

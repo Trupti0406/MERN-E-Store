@@ -1,3 +1,42 @@
+/* CSS FOR HEADER */
+.search-bar {
+  border-radius: 8px 0px 0px 8px;
+  width: 400px;
+}
+
+.search-bar:focus {
+  border-color: #f79210;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.search-button {
+  border-radius: 0px 8px 8px 0px;
+}
+
+/* Media queries for Header */
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    width: 100%;
+  }
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .search-bar {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .search-bar {
+    width: 100%;
+  }
+}
 .app-container {
   min-height: 100vh;
 }
@@ -235,4 +274,28 @@ button:hover {
   height: 100px;
   width: 100px;
   object-fit: contain;
+}
+
+/*  =========== Sidebar CSS =========== */
+
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: #ffcc8a;
+  transition: 0.5s;
+  color: black;
+}
+
+.app-container {
+  transition: 0.5s;
+}
+
+.active-container {
+  margin-left: 240px;
+}
+
+.active-nav {
+  left: 0;
 }

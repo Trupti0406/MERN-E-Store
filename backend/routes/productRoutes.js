@@ -1,4 +1,5 @@
 import express from "express";
+import expressAsyncHandler from 'express-async-handler'
 import Product from "../models/productModel.js";
 
 const productRouter = express.Router();
@@ -7,6 +8,21 @@ productRouter.get("/", async (req, res) => {
   const products = await Product.find();
   res.send(products);
 });
+
+// GET API FOR CATEGORIES
+productRouter.get(
+  "/categories",
+  expressAsyncHandler(async (req, res) => {
+
+    // to return unique categoriea and not duplicate them
+    const categories = await Product.find().distinct("category");
+    res.send(categories);
+  })
+);
+
+
+
+
 
 // Backend API for returning the product info based on the slug of the product
 productRouter.get("/slug/:slug", async (req, res) => {
