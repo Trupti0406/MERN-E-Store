@@ -20,6 +20,7 @@ import { useState } from "react";
 import axios from "axios";
 import { getError } from "./utils";
 import SearchBar from "./components/SearchBar";
+import SearchScreen from "./screens/SearchScreen";
 
 function App() {
   const { state, dispatch: contextDispatch } = useContext(Store);
@@ -123,7 +124,7 @@ function App() {
                       </ul>
                     </div>
                   ) : (
-                    <Link className="nav-link" to="/signin">
+                    <Link className="btn nav-link" to="/signin">
                       Sign In
                     </Link>
                   )}
@@ -165,6 +166,7 @@ function App() {
             <Route path="/order/:id" element={<OrderScreen />} />
             <Route path="/orderhistoy" element={<OrderHistoryScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/search" element={<SearchScreen />} />
 
             <Route path="/shipping" element={<ShippingScreen />} />
 

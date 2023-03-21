@@ -299,3 +299,7 @@ button:hover {
 .active-nav {
   left: 0;
 }
+
+.search .container {
+  margin-left: calc(1.6 * var(--bs-gutter-x)) !important;
+}
