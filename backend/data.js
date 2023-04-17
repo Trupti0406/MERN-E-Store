@@ -176,6 +176,18 @@ const data = {
       numReviews: 10,
       description: "Women's High-low Knee Length Dress",
     },
+    {
+      name: "A Line Maxi Dress",
+      slug: "a-line-maxi-dress",
+      category: "Dress",
+      image: "https://m.media-amazon.com/images/I/71vELrB1BmL._AC_UL320_.jpg",
+      price: 349,
+      countInStock: 5,
+      brand: "Urbano",
+      rating: 4.2,
+      numReviews: 9,
+      description: "Full length maxi dress, pink color.",
+    },
   ],
 };
 export default data;
