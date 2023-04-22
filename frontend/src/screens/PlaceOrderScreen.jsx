@@ -1,4 +1,4 @@
-import  Axios  from "axios";
+import Axios from "axios";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
 export default function PlaceOrderScreen() {
   const navigate = useNavigate();
 
-  const [{ loading}, dispatch] = useReducer(reducer, {
+  const [{ loading }, dispatch] = useReducer(reducer, {
     loading: false,
   });
 
@@ -47,8 +47,8 @@ export default function PlaceOrderScreen() {
 
   const placeOrderHandler = async () => {
     try {
-        dispatch({ type: "CREATE_REQUEST" });
-        
+      dispatch({ type: "CREATE_REQUEST" });
+
       const { data } = await Axios.post(
         "/api/orders",
         {
@@ -58,7 +58,7 @@ export default function PlaceOrderScreen() {
           itemsPrice: cart.itemsPrice,
           shippingPrice: cart.shippingPrice,
           totalPrice: cart.totalPrice,
-          },
+        },
         // By having this option, this particular api is authenticated,
         // means, in the server I can detect if the request is coming from a logged in user or hacker
         {
@@ -119,8 +119,20 @@ export default function PlaceOrderScreen() {
 
               <Card className="mb-2 w-75">
                 <Card.Body>
-                  <Card.Title className="h4">Items</Card.Title>
+                  <Card.Title className="h4 text-center">Items</Card.Title>
                   <ListGroup variant="flush">
+                    <Row className="align-items-center">
+                      <Col md={6} className="fw-bold h5">
+                        Product
+                      </Col>
+                      <Col md={3} className="fw-bold h5">
+                        Quantity
+                      </Col>
+                      <Col md={3} className="fw-bold h5">
+                        Price
+                      </Col>
+                    </Row>
+                    <hr />
                     {cart.cartItems.map((item) => (
                       <ListGroup.Item key={item._id}>
                         <Row className="align-items-center">
@@ -130,14 +142,24 @@ export default function PlaceOrderScreen() {
                               alt={item.name}
                               className="img-fluid rounded img-thumbnail"
                             ></img>{" "}
-                            <Link to={`/product/${item.slug}`}>
+                            <Link
+                              to={`/product/${item.slug}`}
+                              className="ms-2 fw-semibold "
+                            >
                               {item.name}
                             </Link>
                           </Col>
                           <Col md={3}>
-                            <span>{item.quantity}</span>
+                            <span className="fw-semibold px-3 py-2 bg-warning rounded">
+                              {item.quantity}
+                            </span>
                           </Col>
-                          <Col md={3}>₹ {item.price}</Col>
+                          <Col md={3}>
+                            {" "}
+                            <span className="fw-semibold px-3 py-2 bg-warning rounded">
+                              ₹ {item.price}
+                            </span>{" "}
+                          </Col>
                         </Row>
                       </ListGroup.Item>
                     ))}
@@ -183,8 +205,8 @@ export default function PlaceOrderScreen() {
                   >
                     Place Order
                   </button>
-                              </div>
-                              {loading && <LodingBox/>}
+                </div>
+                {loading && <LodingBox />}
               </div>
             </div>
           </div>

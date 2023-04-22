@@ -10,7 +10,7 @@ productRouter.get("/", async (req, res) => {
 });
 
 // For Search functionality
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 4;
 productRouter.get(
   "/search",
   expressAsyncHandler(async (req, res) => {

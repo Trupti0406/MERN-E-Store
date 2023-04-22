@@ -51,7 +51,7 @@ export default function SignInScreen() {
       </Helmet>
       <form action="" className="login-form mt-3 mb-4" onSubmit={submitHandler}>
         {/* <img src={logo} alt="logo" style={{ width: "180px" }} /> */}
-        <h2 className="mt-4 fw-bold">Please login to your account</h2>
+        <h4 className="mt-4 mb-5 fw-bold">Please login to your account</h4>
         <div className="d-flex flex-column mb-3">
           <label className="fw-semibold" htmlFor="email">
             E-mail:
