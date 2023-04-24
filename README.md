@@ -1,6 +1,6 @@
 # Mern E-Store
 
-**E-Store is a Fully-Functional MERN application with user Authentication i.e. SignIn & Signup functionality, fully functional cart, order history, payment integration, product screen, shipping screen and other functionalities such as searching, sorting, pagination and many more**
+**E-Store is a Fully-Functional MERN application with user Authentication i.e. sign-in & Signup functionality, a fully functional cart, order history, payment integration, product screen, shipping screen, and other functionalities such as searching, sorting pagination, and many more.**
 
 <hr>
 
