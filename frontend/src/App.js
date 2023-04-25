@@ -124,7 +124,7 @@ function App() {
                       </ul>
                     </div>
                   ) : (
-                    <Link className="btn nav-link" to="/signin">
+                    <Link className="btn nav-link btn-warning" to="/signin">
                       Sign In
                     </Link>
                   )}
