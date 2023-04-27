@@ -308,3 +308,7 @@ button:hover {
 .cart-empty {
   font-size: 10rem !important;
 }
+
+.dropdown-menu[data-bs-popper] {
+  left: -10px;
+}
