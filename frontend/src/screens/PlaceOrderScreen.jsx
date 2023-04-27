@@ -2,9 +2,6 @@ import Axios from "axios";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Store } from "../Store";
 import CheckOutBar from "../components/CheckOutBar";
@@ -117,26 +114,20 @@ export default function PlaceOrderScreen() {
                 </div>
               </div>
 
-              <Card className="mb-2 w-75">
-                <Card.Body>
-                  <Card.Title className="h4 text-center">Items</Card.Title>
+              <div className="card mb-2 w-75">
+                <div className="card-body">
+                  <div className="card-title h4 text-center">Items</div>
                   <ListGroup variant="flush">
-                    <Row className="align-items-center">
-                      <Col md={6} className="fw-bold h5">
-                        Product
-                      </Col>
-                      <Col md={3} className="fw-bold h5">
-                        Quantity
-                      </Col>
-                      <Col md={3} className="fw-bold h5">
-                        Price
-                      </Col>
-                    </Row>
+                    <div className="row align-items-center">
+                      <div className="col-md-6 fw-bold h5">Product</div>
+                      <div className="col-md-3 fw-bold h5">Quantity</div>
+                      <div className="col-md-3 fw-bold h5">Price</div>
+                    </div>
                     <hr />
                     {cart.cartItems.map((item) => (
                       <ListGroup.Item key={item._id}>
-                        <Row className="align-items-center">
-                          <Col md={6}>
+                        <div className="row align-items-center">
+                          <div className="col-md-6">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -148,25 +139,25 @@ export default function PlaceOrderScreen() {
                             >
                               {item.name}
                             </Link>
-                          </Col>
-                          <Col md={3}>
+                          </div>
+                          <div className="col-md-3">
                             <span className="fw-semibold px-3 py-2 bg-warning rounded">
                               {item.quantity}
                             </span>
-                          </Col>
-                          <Col md={3}>
+                          </div>
+                          <div className="col-md-3">
                             {" "}
                             <span className="fw-semibold px-3 py-2 bg-warning rounded">
                               ₹ {item.price}
                             </span>{" "}
-                          </Col>
-                        </Row>
+                          </div>
+                        </div>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
                   <Link to="/cart">Edit</Link>
-                </Card.Body>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
 

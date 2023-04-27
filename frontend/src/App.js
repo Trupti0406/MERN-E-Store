@@ -124,7 +124,10 @@ function App() {
                       </ul>
                     </div>
                   ) : (
-                    <Link className="btn nav-link btn-warning" to="/signin">
+                    <Link
+                      className="btn btn-warning text-decoration-none text-black fs-5 "
+                      to="/signin"
+                    >
                       Sign In
                     </Link>
                   )}
@@ -136,21 +139,34 @@ function App() {
         <div
           className={
             sidebarIsOpen
-              ? "active-nav side-navbar d-flex justify-content-between flex-wrap flex-column"
+              ? "active-nav side-navbar d-flex justify-content-between flex-wrap flex-column bg-light border"
               : "side-navbar d-flex justify-content-between flex-wrap flex-column"
           }
         >
-          <div className="nav flex-column text-white w-100 p-2">
+          <div className="mt-4 nav flex-column align-items-center text-white w-100 p-2 mb-3">
+            <div
+              className="btn nav-item mb-5"
+              onClick={() => setSidebarIsOpen(false)}
+            >
+              <strong className="fs-5 bg-danger rounded-circle px-3 py-2">
+                X
+              </strong>
+            </div>
             <div className="nav-item">
-              <strong>Categories</strong>
+              <strong className="fs-5 bg-dark px-5 py-1">Categories</strong>
             </div>
             {categories.map((category) => (
-              <div className="nav-item" key={category}>
+              <div className="nav-item mt-3" key={category}>
                 <NavLink
                   to={{ pathname: "/search", search: `category=${category}` }}
                   onClick={() => setSidebarIsOpen(false)}
                 >
-                  <div className="nav-link">{category}</div>
+                  <div
+                    className="nav-link h5 bg-warning text-black fw-semibold px-5"
+                    style={{ "--bs-bg-opacity": ".5" }}
+                  >
+                    {category}
+                  </div>
                 </NavLink>
               </div>
             ))}

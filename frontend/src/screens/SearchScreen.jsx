@@ -130,8 +130,8 @@ export default function SearchScreen() {
         <title>Search Products</title>
       </Helmet>
       <div className="row container">
-        <div className="col-md-3">
-          <h3>Department</h3>
+        <div className="col-md-3 bg-warning bg-opacity-25 border">
+          <h4>Department</h4>
           <div>
             <ul>
               <li>
@@ -155,7 +155,7 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Price</h3>
+            <h4>Price</h4>
             <ul>
               <li>
                 <Link
@@ -178,7 +178,7 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <h4>Avg. Customer Review</h4>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -251,9 +251,7 @@ export default function SearchScreen() {
               <div className="row">
                 {products.map((product) => (
                   <div
-                    // sm={6}
-                    // lg={4}
-                    className="col mb-3 col-sm-12 col-md-4 col-lg-3"
+                    className="col col-sm-12 col-md-4 col-lg-3"
                     key={product._id}
                   >
                     <Product product={product}></Product>
@@ -261,11 +259,11 @@ export default function SearchScreen() {
                 ))}
               </div>
 
-              <div>
+              <div className="d-flex justify-content-center gap-4">
                 {[...Array(pages).keys()].map((x) => (
                   <Link
                     key={x + 1}
-                    className="mx-1"
+                    className=""
                     to={getFilterUrl({ page: x + 1 })}
                   >
                     <Button

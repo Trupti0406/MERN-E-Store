@@ -175,6 +175,7 @@ button:hover {
   }
   .rating {
     flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -302,4 +303,8 @@ button:hover {
 
 .search .container {
   margin-left: calc(1.6 * var(--bs-gutter-x)) !important;
+}
+
+.cart-empty {
+  font-size: 10rem !important;
 }

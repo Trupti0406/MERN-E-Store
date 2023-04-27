@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import MessageBox from "../components/MessageBox";
+// import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
+import "../App.css";
 
 export default function CartScreen() {
   const navigate = useNavigate();
@@ -41,10 +42,29 @@ export default function CartScreen() {
         <div className="mainContainer row justify-content-center gap-5">
           {/* <!-- Cart Items Section --> */}
           {cartItems.length === 0 ? (
-            <MessageBox>
-              Cart is Empty. <Link to="/">Go Shopping</Link>
-            </MessageBox>
+            <div className="mt-md-5 d-flex align-items-center justify-content-center flex-column">
+              <div className="position-relative">
+                <i className="cart-empty fa-solid fa-cart-shopping fs-1 h1"></i>
+                <span className="p-4 position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                  <span className="fw-bolder fs-2">!</span>
+                </span>
+              </div>
+
+              <h2>Your Cart is Empty :( </h2>
+              <h5 className="mt-2">Let's go buy something</h5>
+              <button className="px-5 py-3 mt-3 ">
+                <Link
+                  to="/"
+                  className="text-black text-decoration-none h5 fw-bold"
+                >
+                  Shop Now
+                </Link>
+              </button>
+            </div>
           ) : (
+            // <MessageBox>
+            //   Cart is Empty. <Link to="/">Go Shopping</Link>
+            // </MessageBox>
             <div className="items col-8 mb-3 ">
               <div className="items-holder px-1">
                 {cartItems.map((item) => (
@@ -121,24 +141,31 @@ export default function CartScreen() {
           )}
 
           {/* Purchase Summary Section */}
-          <div className="col summary mb-3">
-            <div className="card text-center">
-              <h4 className="card-header fw-bolder px-2 py-3">Summary</h4>
-              <div className="card-body text-start">
-                <div className="row">
-                  <h5>
-                    <span className="me-3">
-                      {" "}
-                      Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}
-                      items):
-                    </span>
-                    <b>
-                      ₹{" "}
-                      {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
-                    </b>
-                  </h5>
-                </div>
-                {/* <div className="row">
+          {cartItems.length === 0 ? (
+            ""
+          ) : (
+            <div className="col summary mb-3">
+              <div className="card text-center">
+                <h4 className="card-header fw-bolder px-2 py-3">Summary</h4>
+                <div className="card-body text-start">
+                  <div className="row">
+                    <h5>
+                      <span className="me-3">
+                        {" "}
+                        Subtotal (
+                        {cartItems.reduce((a, c) => a + c.quantity, 0)}
+                        items):
+                      </span>
+                      <b>
+                        ₹{" "}
+                        {cartItems.reduce(
+                          (a, c) => a + c.price * c.quantity,
+                          0
+                        )}
+                      </b>
+                    </h5>
+                  </div>
+                  {/* <div className="row">
                   <div className="col fw-bold text-muted">Shipping</div>
                   <div className="col fw-bold text-muted shipping-amt">₹ 0</div>
                 </div>
@@ -148,19 +175,20 @@ export default function CartScreen() {
                   <div className="col total total-amt fw-bold">₹ 4297</div>
                 </div> */}
 
-                <hr />
-                <div className="d-grid">
-                  <button
-                    onClick={checkOutHandler}
-                    className="btn fw-bold"
-                    disabled={cartItems.length === 0}
-                  >
-                    Proceed To Checkout
-                  </button>
+                  <hr />
+                  <div className="d-grid">
+                    <button
+                      onClick={checkOutHandler}
+                      className="btn fw-bold"
+                      disabled={cartItems.length === 0}
+                    >
+                      Proceed To Checkout
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

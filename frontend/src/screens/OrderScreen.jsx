@@ -3,9 +3,6 @@ import React, { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import LodingBox from "../components/LodingBox";
 import MessageBox from "../components/MessageBox";
@@ -188,33 +185,49 @@ export default function OrderScreen() {
                 </div>
               </div>
 
-              <Card className="mb-2 w-75">
-                <Card.Body>
-                  <Card.Title className="h4">Items</Card.Title>
+              <div className="card mb-2 w-75">
+                <div className="card-body">
+                  <div className="card-title h4 text-center">Items</div>
                   <ListGroup variant="flush">
+                    <div className="row align-items-center">
+                      <div className="col-md-6 fw-bold h5">Product</div>
+                      <div className="col-md-3 fw-bold h5">Quantity</div>
+                      <div className="col-md-3 fw-bold h5">Price</div>
+                    </div>
+                    <hr />
                     {order.orderItems.map((item) => (
                       <ListGroup.Item key={item._id}>
-                        <Row className="align-items-center">
-                          <Col md={6}>
+                        <div className="row align-items-center">
+                          <div className="col-md-6">
                             <img
                               src={item.image}
                               alt={item.name}
                               className="img-fluid rounded img-thumbnail"
                             ></img>{" "}
-                            <Link to={`/product/${item.slug}`}>
+                            <Link
+                              to={`/product/${item.slug}`}
+                              className="ms-2 fw-semibold "
+                            >
                               {item.name}
                             </Link>
-                          </Col>
-                          <Col md={3}>
-                            <span>{item.quantity}</span>
-                          </Col>
-                          <Col md={3}>₹ {item.price}</Col>
-                        </Row>
+                          </div>
+                          <div className="col-md-3">
+                            <span className="fw-semibold px-3 py-2 bg-warning rounded">
+                              {item.quantity}
+                            </span>
+                          </div>
+                          <div className="col-md-3">
+                            {" "}
+                            <span className="fw-semibold px-3 py-2 bg-warning rounded">
+                              ₹ {item.price}
+                            </span>{" "}
+                          </div>
+                        </div>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
-                </Card.Body>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
 
