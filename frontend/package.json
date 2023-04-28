@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://e-store-sever.onrender.com",
+  "proxy": "https://e-store-server-ggh5.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

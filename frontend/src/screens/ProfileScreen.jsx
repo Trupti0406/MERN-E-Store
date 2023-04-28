@@ -28,7 +28,7 @@ export default function ProfileScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
+  const [dispatch] = useReducer(reducer, {
     loadingUpdate: false,
   });
 
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        "/api/users/profile",
+        "https://e-store-server-ggh5.onrender.com/api/users/profile",
         {
           name,
           email,
@@ -56,7 +56,7 @@ export default function ProfileScreen() {
       dispatch({
         type: "FETCH_FAIL",
       });
-      toast.error(getError (err));
+      toast.error(getError(err));
     }
   };
 

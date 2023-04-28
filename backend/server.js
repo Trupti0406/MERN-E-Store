@@ -5,8 +5,8 @@ import seedRouter from "./routes/seedRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
-
-const port = process.env.PORT || 5000;
+const cors = require("cors");
+const PORT = 5000;
 
 // To fectch variables from .env file
 dotenv.config();
@@ -22,6 +22,7 @@ mongoose
 
 const app = express();
 
+app.use(cors());
 // To convert the form data into a json object inside req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +40,6 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-app.listen(port, () => {
-  console.log(`Sever is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Sever started on ${PORT}`);
 });
