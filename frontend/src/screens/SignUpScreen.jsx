@@ -28,11 +28,14 @@ export default function SignUpScreen() {
     }
     try {
       // sending ajax request to backend for '/api/user/signin'
-      const { data } = await Axios.post("/api/users/signup", {
-        name,
-        email,
-        password,
-      });
+      const { data } = await Axios.post(
+        "https://estore-server.onrender.com/api/users/signup",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       contextDispatch({
         type: "USER_SIGNIN",
         payload: data,

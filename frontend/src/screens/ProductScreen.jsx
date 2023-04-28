@@ -39,7 +39,9 @@ export default function ProductScreen() {
       //before sending ajax request we will send a loading message
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const result = await axios.get(`/api/products/slug/${slug}`);
+        const result = await axios.get(
+          `https://estore-server.onrender.com/api/products/slug/${slug}`
+        );
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
@@ -61,7 +63,9 @@ export default function ProductScreen() {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     // If it exists then we need to increase the quantity by 1
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
+    const { data } = await axios.get(
+      `https://estore-server.onrender.com/api/products/${product._id}`
+    );
     if (data.countInStock < quantity) {
       window.alert("Sorry, the product is out of stock");
       return;
