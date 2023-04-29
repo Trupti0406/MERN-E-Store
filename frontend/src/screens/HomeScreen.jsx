@@ -32,7 +32,9 @@ export default function HomeScreen() {
       //before sending ajax request we will send a loading message
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const result = await axios.get("http://localhost:5000/api/products");
+        const result = await axios.get(
+          "https://e-store-p9j0.onrender.com/api/products"
+        );
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {

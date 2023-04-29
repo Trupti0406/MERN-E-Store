@@ -75,7 +75,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: "PAY_REQUEST" });
         const { data } = await axios.put(
-          `http://localhost:5000/api/orders/${order._id}/pay`,
+          `https://e-store-p9j0.onrender.com/api/orders/${order._id}/pay`,
           details,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
@@ -97,7 +97,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(
-          `http://localhost:5000/api/orders/${orderId}`,
+          `https://e-store-p9j0.onrender.com/api/orders/${orderId}`,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
           }
@@ -121,7 +121,7 @@ export default function OrderScreen() {
     } else {
       const loadPaypalScript = async () => {
         const { data: clientId } = await axios.get(
-          "http://localhost:5000/api/keys/paypal",
+          "https://e-store-p9j0.onrender.com/api/keys/paypal",
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
           }

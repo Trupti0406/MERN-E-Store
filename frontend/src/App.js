@@ -30,6 +30,8 @@ function App() {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
+    localStorage.removeItem("__paypal_storage__");
+
     window.location.href = "/signin";
   };
 
@@ -40,7 +42,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/products/categories`
+          `https://e-store-p9j0.onrender.com/api/products/categories`
         );
         setCategories(data);
       } catch (err) {
@@ -138,6 +140,7 @@ function App() {
             </div>
           </nav>
         </header>
+
         <div
           className={
             sidebarIsOpen

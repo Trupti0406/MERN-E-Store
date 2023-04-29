@@ -34,7 +34,7 @@ export default function OrderHistoryScreen() {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/orders/mine`,
+          `https://e-store-p9j0.onrender.com/api/orders/mine`,
 
           { headers: { Authorization: `Bearer ${userInfo.token}` } }
         );
