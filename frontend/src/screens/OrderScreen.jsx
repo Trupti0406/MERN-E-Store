@@ -75,7 +75,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: "PAY_REQUEST" });
         const { data } = await axios.put(
-          `https://estore-server.onrender.com/api/orders/${order._id}/pay`,
+          `http://localhost:5000/api/orders/${order._id}/pay`,
           details,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
@@ -97,7 +97,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(
-          `https://estore-server.onrender.com/api/orders/${orderId}`,
+          `http://localhost:5000/api/orders/${orderId}`,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
           }
@@ -121,7 +121,7 @@ export default function OrderScreen() {
     } else {
       const loadPaypalScript = async () => {
         const { data: clientId } = await axios.get(
-          "https://estore-server.onrender.com/api/keys/paypal",
+          "http://localhost:5000/api/keys/paypal",
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
           }
@@ -151,8 +151,8 @@ export default function OrderScreen() {
       <h2 className="text-center mb-4 mt-1">Order ID: {orderId}</h2>
       <div className="container">
         <div className="row">
-          <div className="col-8 border-1">
-            <div className="row">
+          <div className="col-md-8 border-1 ">
+            <div className="row d-flex align-items-center justify-content-center">
               <div className="card w-75 mb-2 ">
                 <div className="card-body p-2">
                   <h4 className="card-title">Shipping</h4>
@@ -237,7 +237,7 @@ export default function OrderScreen() {
             </div>
           </div>
 
-          <div className="col-4">
+          <div className="col-md-4">
             <div className="card text-center">
               <h4 className="card-header fw-bolder px-2 py-3">Order Summary</h4>
               <div className="card-body text-start">

@@ -40,7 +40,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://estore-server.onrender.com/api/products/categories`
+          `http://localhost:5000/api/products/categories`
         );
         setCategories(data);
       } catch (err) {

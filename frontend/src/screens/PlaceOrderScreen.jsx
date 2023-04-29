@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Store } from "../Store";
-import CheckOutBar from "../components/CheckOutBar";
 import { useEffect } from "react";
 import { useReducer } from "react";
 import { toast } from "react-toastify";
@@ -47,7 +46,7 @@ export default function PlaceOrderScreen() {
       dispatch({ type: "CREATE_REQUEST" });
 
       const { data } = await Axios.post(
-        "https://estore-server.onrender.com/api/orders",
+        "http://localhost:5000/api/orders",
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,
@@ -80,15 +79,16 @@ export default function PlaceOrderScreen() {
   }, [cart, navigate]);
   return (
     <>
-      <CheckOutBar step1 step2 step3 step4></CheckOutBar>
       <Helmet>
         <title>Preview Order</title>
       </Helmet>
-      <h2 className="text-center mb-4 mt-1">Review Order</h2>
+      <h2 className="text-center mb-4 mt-1 fw-bolder text-center py-3 px-3">
+        Review Order
+      </h2>
       <div className="container">
         <div className="row">
-          <div className="col-8 border-1">
-            <div className="row">
+          <div className="col-md-8 border-1">
+            <div className="row d-flex align-items-center justify-content-center">
               <div className="card w-75 mb-2 ">
                 <div className="card-body p-2">
                   <h4 className="card-title">Shipping</h4>
@@ -113,7 +113,6 @@ export default function PlaceOrderScreen() {
                   <Link to="/payment">Edit</Link>
                 </div>
               </div>
-
               <div className="card mb-2 w-75">
                 <div className="card-body">
                   <div className="card-title h4 text-center">Items</div>
@@ -161,7 +160,7 @@ export default function PlaceOrderScreen() {
             </div>
           </div>
 
-          <div className="col-4">
+          <div className="col-md-4">
             <div className="card text-center">
               <h4 className="card-header fw-bolder px-2 py-3">Order Summary</h4>
               <div className="card-body text-start">

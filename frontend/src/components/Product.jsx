@@ -18,7 +18,7 @@ export default function Product(props) {
     // If it exists then we need to increase the quantity by 1
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(
-      `https://estore-server.onrender.com/api/products/${item._id}`
+      `http://localhost:5000/api/products/${item._id}`
     );
     if (data.countInStock < quantity) {
       window.alert("Sorry, Product is out of stock");

@@ -22,7 +22,7 @@ export default function SignInScreen() {
     try {
       // sending ajax request to backend for '/api/user/signin'
       const { data } = await Axios.post(
-        "https://estore-server.onrender.com/api/users/signin",
+        "http://localhost:5000/api/users/signin",
         {
           email,
           password,

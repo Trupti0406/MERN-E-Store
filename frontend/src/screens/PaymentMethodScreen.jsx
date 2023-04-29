@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import CheckOutBar from "../components/CheckOutBar";
 import { Store } from "../Store";
 
 export default function PaymentMethodScreen() {
@@ -20,7 +19,7 @@ export default function PaymentMethodScreen() {
       navigate("/shipping");
     }
   }, [shippingAddress, navigate]);
-  
+
   const submitHandler = (e) => {
     e.preventDefault();
     contextDispatch({
@@ -32,12 +31,13 @@ export default function PaymentMethodScreen() {
   };
   return (
     <>
-      <CheckOutBar step1 step2 step3></CheckOutBar>
       <div className="payment container">
         <Helmet>
           <title>Payment method</title>
         </Helmet>
-        <h2 className="text-center mb-4 mt-1">Select Payment Method</h2>
+        <h2 className="text-center mb-4 mt-1 fw-bolder text-center py-3 px-3">
+          Select Payment Method
+        </h2>
         <form onSubmit={submitHandler}>
           <div className="form-check mb-3">
             <input
