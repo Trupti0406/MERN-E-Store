@@ -1,11 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+image1.png
+MERN E-Store Thought Note.pdf
 .env
 node_modules
 /.pnp
 .pnp.js
-
 # testing
 /coverage
 
