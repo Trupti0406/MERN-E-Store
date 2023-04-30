@@ -10,7 +10,7 @@
 
 1. In your code editor search for a link "https://estore-server.onrender.com" and replace them all with "http://localhost:5000". You can do that as per the picture shown below:
 
-   ![image description](image1.png)
+   ![image description](https://ik.imagekit.io/msiypl6c7/image1.png?updatedAt=1682885583776)
 
 2. Now go to the **"frontend"** folder, open the frontend folder in an integrated terminal and run the command **`npm install`** to install all the dependencies.
 
