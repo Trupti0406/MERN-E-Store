@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 
@@ -18,17 +17,15 @@ export default function ShippingScreen() {
     shippingAddress.postalCode || ""
   );
   const [country, setCountry] = useState(shippingAddress.country || "");
-
   useEffect(() => {
     if (!userInfo) {
       navigate("/signin?redirect=/shipping");
     }
   }, [userInfo, navigate]);
-
   const submitHandler = (e) => {
     e.preventDefault();
     contextDispatch({
-      type: "SAVE_SHIPPING ADDRESS",
+      type: "SAVE_SHIPPING_ADDRESS",
       payload: {
         fullName,
         address,
@@ -47,66 +44,71 @@ export default function ShippingScreen() {
         country,
       })
     );
-    window.location.href = "/payment";
-    // navigate("/payment");
-    // console.log("Navigated to next page");
+    navigate("/payment");
   };
+
   return (
-    <>
+    <div>
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>
-      <h2 className="mb-3 fw-bold text-center fw-bolder text-center py-3 px-3">
-        Shipping Address
-      </h2>
-      <form onSubmit={submitHandler} className="shipping-form mt-3 mb-4">
-        <Form.Group className="mb-3" controlId="fullName">
-          <Form.Label className="fw-semibold">Full Name</Form.Label>
-          <Form.Control
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="address">
-          <Form.Label className="fw-semibold">Address</Form.Label>
-          <Form.Control
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="city">
-          <Form.Label className="fw-semibold">City</Form.Label>
-          <Form.Control
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="postalCode">
-          <Form.Label className="fw-semibold">Postal Code</Form.Label>
-          <Form.Control
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="country">
-          <Form.Label className="fw-semibold">Country</Form.Label>
-          <Form.Control
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </Form.Group>
 
-        <div className="d-grid">
-          <button id="login-btn" className="fw-bold">
-            Continue
-          </button>
-        </div>
-      </form>
-    </>
+      <div className="container shipping-form mt-5 mb-5">
+        <h2 className="my-3">Shipping Address</h2>
+        <form onSubmit={submitHandler}>
+          <div className="mb-3" controlid="fullName">
+            <div className="form-label fw-semibold">Full Name</div>
+            <input
+              className="form-control"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3" controlid="address">
+            <div className="form-label fw-semibold">Address</div>
+            <input
+              className="form-control"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3" controlid="city">
+            <div className="fw-semibold">City</div>
+            <input
+              className="form-control"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3" controlid="postalCode">
+            <div className="form-label fw-semibold">Postal Code</div>
+            <input
+              className="form-control"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3" controlid="country">
+            <div className="form-label fw-semibold">Country</div>
+            <input
+              className="form-control"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="d-grid">
+            <button variant="warning" type="submit" className="btn btn fw-bold">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

@@ -33,7 +33,7 @@ export default function HomeScreen() {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const result = await axios.get(
-          "https://e-store-p9j0.onrender.com/api/products"
+          "https://estore-server.onrender.com/api/products"
         );
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });

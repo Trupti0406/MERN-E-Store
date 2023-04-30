@@ -36,7 +36,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        "https://e-store-p9j0.onrender.com/api/users/profile",
+        "https://estore-server.onrender.com/api/users/profile",
         {
           name,
           email,

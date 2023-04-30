@@ -40,7 +40,7 @@ export default function ProductScreen() {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const result = await axios.get(
-          `https://e-store-p9j0.onrender.com/api/products/slug/${slug}`
+          `https://estore-server.onrender.com/api/products/slug/${slug}`
         );
         //   if I successfully get the products from backend then we will dispatch fetch success
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
@@ -64,7 +64,7 @@ export default function ProductScreen() {
     // If it exists then we need to increase the quantity by 1
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(
-      `https://e-store-p9j0.onrender.com/api/products/${product._id}`
+      `https://estore-server.onrender.com/api/products/${product._id}`
     );
     if (data.countInStock < quantity) {
       window.alert("Sorry, the product is out of stock");

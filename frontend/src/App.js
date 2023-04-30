@@ -31,7 +31,6 @@ function App() {
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
     localStorage.removeItem("__paypal_storage__");
-
     window.location.href = "/signin";
   };
 
@@ -42,7 +41,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://e-store-p9j0.onrender.com/api/products/categories`
+          `https://estore-server.onrender.com/api/products/categories`
         );
         setCategories(data);
       } catch (err) {
@@ -188,9 +187,7 @@ function App() {
             <Route path="/orderhistoy" element={<OrderHistoryScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/search" element={<SearchScreen />} />
-
             <Route path="/shipping" element={<ShippingScreen />} />
-
             <Route path="/payment" element={<PaymentMethodScreen />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>

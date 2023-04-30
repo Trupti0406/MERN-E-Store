@@ -15,7 +15,7 @@ export default function CartScreen() {
 
   const updateCartHandler = async (item, quantity) => {
     const { data } = await axios.get(
-      `https://e-store-p9j0.onrender.com/api/products/${item._id}`
+      `https://estore-server.onrender.com/api/products/${item._id}`
     );
     if (data.countInStock < quantity) {
       window.alert("Sorry, Product is out of stock");
