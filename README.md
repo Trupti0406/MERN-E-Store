@@ -26,4 +26,4 @@
 
 6. And run **`node server.js`** in the same backend terminal.
 
-   Your app will be running in your browser on link **http://localhost/5000**
+   Your app will be running in your browser on link **http://localhost/3000**
